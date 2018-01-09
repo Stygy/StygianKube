@@ -1,0 +1,57 @@
+{
+  "apiVersion": "vlabs",
+  "properties": {
+    "orchestratorProfile": {
+      "orchestratorType": "Kubernetes",
+	  "kubernetesConfig": {
+        "gcHighThreshold":70,
+        "gcLowThreshold": 60
+      }
+    },
+    "masterProfile": {
+      "count": 1,
+      "dnsPrefix": "kubeacsengine",
+      "vmSize": "Standard_D2_v2",
+      "OSDiskSizeGB": 200
+    },
+    "agentPoolProfiles": [
+      {
+        "name": "linuxpool1",
+        "count": 2,
+        "vmSize": "Standard_D2_v2",
+        "availabilityProfile": "AvailabilitySet",
+		"OSDiskSizeGB": 200,
+		"storageProfile": "StorageAccount",
+		"diskSizesGB": [256, 256]
+      },
+      {
+        "name": "windowspool1",
+        "count": 3,
+        "vmSize": "Standard_D2_v2",
+        "availabilityProfile": "AvailabilitySet",
+        "osType": "Windows",
+		"OSDiskSizeGB": 200,
+		"storageProfile": "StorageAccount",
+		"diskSizesGB": [256, 256]		
+      }
+    ],
+    "windowsProfile": {
+      "adminUsername": "",
+      "adminPassword": ""	  
+    },
+    "linuxProfile": {
+      "adminUsername": "",
+      "ssh": {
+        "publicKeys": [
+          {
+            "keyData": ""
+          }
+        ]
+      }
+    },
+    "servicePrincipalProfile": {
+      "clientId": "",
+      "secret": ""
+    }
+  }
+}
